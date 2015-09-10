@@ -1,0 +1,61 @@
+<%= favicon_link_tag 'favicon2.ico' %>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<%= stylesheet_link_tag "estilos.css" %>
+<%= stylesheet_link_tag "bootstrap.min.css" %>
+<h2 id="form">Ingresar (Sesión Maestro)</h2>
+<%= render 'shared/error_logins' %>
+<%= form_for(:maestro_session, url: maestro_login_path) do |f| %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <%= f.label :correo %>
+        <%= f.text_field :correo, class: 'form-control' %>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span>Recordarme en esta computadora</span>
+        <% end %>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>  
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <%= f.submit "Iniciar sesión", class: "btn btn-success btn-lg btn-block" %>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+  <% end %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+        <p>¿Nuevo usuario? <%= link_to "Registro", registro_path %> </p>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>
+  <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+  <%= javascript_include_tag "boostrap.min"  %>

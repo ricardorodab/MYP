@@ -1,0 +1,13 @@
+<h1>Usuarios</h1>
+
+<%= will_paginate %>
+
+<ul class="estudiantes">
+  <% @estudiantes.each do |estudiante| %>
+  <li>
+    <%= link_to estudiante.nombre, estudiante %>
+  </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

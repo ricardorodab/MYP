@@ -1,0 +1,9 @@
+class AddAdmin < ActiveRecord::Migration
+  def change
+    add_column :estudiantes, :admin, :boolean, default: false
+  end
+
+  def change
+    add_column :maestros, :admin, :boolean, default: false
+  end
+end

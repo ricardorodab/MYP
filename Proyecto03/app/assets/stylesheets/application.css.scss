@@ -1,0 +1,67 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+body
+{
+	margin: 0;
+}
+header 
+{
+	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-image: url(cienciasBlur.jpg);
+	background-size: 1408px 1056px;
+	background-repeat: no-repeat;
+	height: 900px;
+		
+}
+header h1
+{
+	color: #2c3e50;
+	margin: 0em 0;
+	padding: 1.4em 0 .5em;
+	text-align: center;
+	font-weight: 100;
+	font-size: 93px;
+	line-height: 93px;
+}
+header ul
+{
+	list-style: none;
+}
+header ul li
+{
+	margin-top: 5em;
+	margin-bottom: 4em;
+	text-align: center;
+}
+header ul li a
+{
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 300;
+	color: white;
+	font-size: 22px;
+	padding: 20px 35px;
+	background: #d35400;
+	margin-left: -2.5em;
+	border-radius: 9px;
+	border: 2px solid #d35400;
+	letter-spacing: 1.8px;
+
+}

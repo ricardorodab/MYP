@@ -1,0 +1,28 @@
+  [1m[36m (361.5ms)[0m  [1mCREATE TABLE `estudiantes` (`id` int(11) auto_increment PRIMARY KEY, `nombre` varchar(255), `correo` varchar(255), `created_at` datetime, `updated_at` datetime, `password_digest` varchar(255), `remember_digest` varchar(255)) ENGINE=InnoDB[0m
+  [1m[35m (310.0ms)[0m  CREATE UNIQUE INDEX `index_estudiantes_on_correo` USING btree ON `estudiantes` (`correo`) 
+  [1m[36m (319.9ms)[0m  [1mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (500.0ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations`  ON `schema_migrations` (`version`) 
+  [1m[36m (0.5ms)[0m  [1mSELECT version FROM `schema_migrations`[0m
+  [1m[35m (54.0ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20141208023723')
+  [1m[36m (44.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20141206220555')[0m
+  [1m[35m (43.8ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20141206200314')
+  [1m[36m (44.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20141206215452')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36m (0.4ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `estudiantes`
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO `estudiantes` (`nombre`, `correo`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2014-12-08 04:17:35', '2014-12-08 04:17:35', 980190962)[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO `estudiantes` (`nombre`, `correo`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2014-12-08 04:17:35', '2014-12-08 04:17:35', 298486374)
+Mysql2::Error: Duplicate entry 'MyString' for key 'index_estudiantes_on_correo': INSERT INTO `estudiantes` (`nombre`, `correo`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2014-12-08 04:17:35', '2014-12-08 04:17:35', 298486374)
+  [1m[36m (87.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.3ms)[0m  [1mSELECT @@FOREIGN_KEY_CHECKS[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 0
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `estudiantes`
+  [1m[36mFixture Insert (0.4ms)[0m  [1mINSERT INTO `estudiantes` (`nombre`, `correo`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2014-12-08 04:17:35', '2014-12-08 04:17:35', 980190962)[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO `estudiantes` (`nombre`, `correo`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2014-12-08 04:17:35', '2014-12-08 04:17:35', 298486374)
+Mysql2::Error: Duplicate entry 'MyString' for key 'index_estudiantes_on_correo': INSERT INTO `estudiantes` (`nombre`, `correo`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyString', '2014-12-08 04:17:35', '2014-12-08 04:17:35', 298486374)
+  [1m[36m (26.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1

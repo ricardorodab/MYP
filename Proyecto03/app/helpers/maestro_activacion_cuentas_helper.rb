@@ -1,0 +1,2 @@
+module MaestroActivacionCuentasHelper
+end

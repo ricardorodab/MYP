@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title><%= @maestro.nombre %> | El Prometeo</title>
+	<%= stylesheet_link_tag "bootstrap.min.css" %>
+	<%= stylesheet_link_tag "estilos.css" %>
+	<%= favicon_link_tag 'favicon2.ico' %>
+	</head>
+	<body>
+	<%= render 'layouts/header' %>
+
+	<section id="prof" data-no-turbolink>
+		<section class="datos-prof">
+			<div id="data">
+			<h3>Nombre: <%= @maestro.nombre %></h3>
+			<h4>Grado académico: <%= @maestro.grado %></h4>
+			<h5>Numero de calificaciones: <%= @maestro.comentarios.count %></h5>
+			</div>
+			<%= link_to "Agregar ayudante", ayudante_nuevo_path(@maestro, :maestro_id => @maestro.id), class: "btn btn-danger btn-lg" %>
+			<% if conectado? && (!Comentario.ya_califico(estudiante_actual, @maestro) || estudiante_actual.admin?) %>
+			<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#calificar">Calificar profesor</button>
+			<% end %>
+			
+		</section>
+		<% if @maestro.comentarios.any? %>
+		<!--<h3>Comentario (<%= @maestro.comentarios.count %>)</h3>-->
+		<%= render @comentarios %>
+		
+		<div class="pag">
+			<%= will_paginate @comentarios %>
+		</div>
+		<% end %>
+	</section>
+	<a href="#">Subir</a>
+	<footer></footer>
+	<%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+	<%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"%>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tag %>
+	</body>
+	<% if conectado? %>
+	<div class="modal fade" id="calificar"  data-backdrop="false"> 
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+
+		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<h4 class="modal-title" id="exampleModalLabel">Calificar a <%= @maestro.nombre %></h4>
+	      </div>	
+	      <div class="modal-body">
+		<%= form_for [@maestro, @comentario] do |f| %>		
+		<%= f.label :facilidad %>
+		<%= f.select :facilidad, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]) %>
+		
+		<%= f.label :ayuda %>
+		<%= f.select :ayuda, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]) %>
+		
+		<%= f.label :claridad %>
+		<%= f.select :claridad, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]) %>
+		
+		<%= f.label :aprobo %>
+		<%= f.select :aprobo, options_for_select([["Si", "true"], ["No", "false"]]) %>
+		
+		<%= f.label :recursador %>
+		<%= f.select :recursador, options_for_select([["Si", "true"], ["No", "false"]]) %>
+		
+		<label>¿En que fecha te dio clase?</label>
+		<%= f.date_select(:semestre, :order => [:year, :month], :start_year => Date.current.year, :end_year => 1994) %>
+		
+		<%= f.hidden_field :estudiante_id, estudiante_id: @estudiante_id %>
+		<%= f.hidden_field :maestro_id, maestro_id: @maestro_id %>  
+		<%= f.label :materia %>
+		<%= f.text_area :materia, :class => "form-control"%>
+		
+		<%= f.label :evaluacion %>
+		<%= f.text_area :evaluacion, :class => "form-control"%>
+		
+		<%= f.label :comentario %>
+		<%= f.text_area :comentario,:class => "form-control"%>
+		
+		<label>¿Lo recomiendas?</label>
+	    	<%= f.select :recomendacion, options_for_select([["Si", "true"], ["No", "false"]]) %>
+		<% if Ayudantia.where("maestro_id = ?", @maestro.id).count > 0 %>
+		<h4> AYUDANTE (Puedes dejarlo en blanco) </h4>
+		<h7>Busca a tu ayudante favorito.</h7>
+		<h7>(Recuerda que si no está, puedes darlo de alta desde el perfil del profesor)</h7>
+		<%= f.collection_select(:ayudante_nombre, Ayudantia.ayudantes_de(@maestro), :nombre, :nombre) %>
+		<%= f.label "Comentario del ayudante" %>
+		<h7>Recuerda escribir algo para que aparezca el ayudante</h7>
+		<%= f.text_area :ayudante_comentario, :class => "form-control", placeholder: "Comentario sobre el ayudante" %>
+		<% end %>
+	      </div>
+	      <div class="modal-footer"> 
+	    	<%= f.submit "Post", class: "btn btn-success btn-lg btn-block" %>
+	      </div>
+	      <% end %>
+	    </div>
+	  </div>
+	</div>
+	<% end %>
+</html>
+

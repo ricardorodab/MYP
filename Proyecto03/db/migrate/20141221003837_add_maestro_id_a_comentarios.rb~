@@ -1,0 +1,4 @@
+class AddMaestroIdAComentarios < ActiveRecord::Migration
+  def change
+  end
+end

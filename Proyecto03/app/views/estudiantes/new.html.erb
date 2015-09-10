@@ -1,0 +1,86 @@
+<% if conectado? %>
+<script type="text/javascript">
+  window.location.href="/estudiantes/<%= estudiante_actual.id %>"  
+</script>
+<% elsif maestro_conectado? %>
+<script type="text/javascript">
+  window.location.href="/maestros/<%= maestro_actual.id %>"  
+</script>
+<% end %>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<%= stylesheet_link_tag "estilos.css" %>
+<%= stylesheet_link_tag "bootstrap.min.css" %>
+<%= favicon_link_tag 'favicon2.ico' %>
+
+<!--Formulario registrarse-->
+  <h2 id="form">Registrarse</h2>
+  <%= form_for(@estudiante) do |f| %>
+  <%= render 'shared/error_messages' %>
+  <ul>
+  <% flash.each do |key, value| %>
+    <li><div class="flash <%= key %>"><%= value %></div></li>
+<% end %>
+</ul>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <%= f.label :nombre %>
+          <%= f.text_field :nombre, class: 'form-control' %>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <%= f.label :correo %>
+          <%= f.text_field :correo, class: 'form-control'  %><span class="input-group-addon">@ciencias.unam.mx</span>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control'  %>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <%= f.label :password_confirmation, 'Repite la contraseña'  %>
+          <%= f.password_field :password_confirmation, class: 'form-control'  %>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+           <%= show_simple_captcha(:object=>"estudiante") %> 
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <%= f.submit "Registrarse", class: "btn btn-success btn-lg btn-block regBtn" %> 
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  <% end %>
+
+
+  <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+  <%= javascript_include_tag "boostrap.min"  %>

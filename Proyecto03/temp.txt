@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pregúntale a Prometeo</title>
+    <meta name="description" content="Pagina para evaluar a los profesores de la Facultad de Ciencias UNAM"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_link_tag "estilos.css" %>
+    <%= stylesheet_link_tag "bootstrap.min.css" %>
+  </head>
+  <body>
+    
+    <header id="welcome">
+    	<h1>Pregúntale a Prometeo</h1>
+		<input type="text" id="searchbox" placeholder="  Buscar">
+		<button type="submit" id="searchbutton">Buscar</button>
+    </header>
+
+    
+    <nav class="navbar navbar-default" role="navigation">
+  
+	  <div class="container-fluid">
+
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">Pregúntale a Prometeo</a>
+	    </div>
+
+	    <div class="collapse navbar-collapse" id="mobile">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Profesores </a></li>
+	        <li><a href="#">Ayudantes</a></li>
+	        <li><a href="#">Materias</a></li>
+	      </ul>
+	      
+	      <ul class="nav navbar-nav navbar-right">
+	        <form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	          <input type="text" class="form-control" placeholder="Buscar">
+	        </div>
+	        <button type="submit" class="btn btn-success">Buscar</button>
+	      </form>
+	        <!-- Nombre de ususario --> 
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Usuario <span class="caret"></span></a>
+	          <ul class="dropdown-menu" role="menu">
+	            <li><a href="#">Ver perfil</a></li>
+	            <li class="divider"></li>
+	            <li><a href="#">Cerrar sesion</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<section id="contenido">
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Canek Pelaez Valdes
+				</h3>	
+				<h4>Calificación: 10</h4>
+			</article>
+		</a>
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Laura Pastrana Ramírez
+				</h3>	
+				<h4>Calificación: 9.4</h4>
+			</article>
+		</a>
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Ligia Pérez Cruz
+				</h3>	
+				<h4>Calificación: 2</h4>
+			</article>
+		</a>
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Sebastián Poggio Ghilarducci
+				</h3>	
+				<h4>Calificación: 8.9</h4>
+			</article>
+		</a>
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Canek Pelaez Valdes
+				</h3>	
+				<h4>Calificación: 10</h4>
+			</article>
+		</a>
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Laura Pastrana Ramírez
+				</h3>	
+				<h4>Calificación: 10</h4>
+			</article>
+		</a>
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Ligia Pérez Cruz
+				</h3>	
+				<h4>Calificación: 10</h4>
+			</article>
+		</a>
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Sebastián Poggio Ghilarducci
+				</h3>	
+				<h4>Calificación: 10</h4>
+			</article>
+		</a>
+		<a href="#">
+			<article class="item">
+				<!--<figure class="imagen_item">
+					<img src="cuBlur.jpg"/>
+				</figure>-->
+				<h3>
+					Un Nombre Muy Laaaargo Hoooooooola Adiooos
+				</h3>	
+				<h4>Calificación: 10</h4>
+			</article>
+		</a>
+	</section>
+
+	<footer>
+		<p>Esto es el footer</p>
+	</footer>
+
+    <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+    <%= javascript_include_tag "boostrap.min"  %>
+    <%= javascript_include_tag "main.js.coffe" %>
+    <%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"%>
+    
+  </body>
+</html>

@@ -1,0 +1,152 @@
+<section class="comentarios-prof">
+  <div class="comment">
+    <ul>
+      <li>
+	<div>
+	  Estudiante:
+ 	</div>
+	<% if (conectado? && !es_ayudante_de(comentario.maestro_id)) || (conectado? && estudiante_actual.admin?) %>
+	<p><%= link_to comentario.estudiante.nombre, comentario.estudiante %></p>
+	<% else %>
+<p> Estudiante miembro desde <%= comentario.estudiante.created_at.to_date %></p>
+<% end %>
+</li>
+<li>
+  <div>
+    Semestre:
+  </div>
+  <% if comentario.semestre.month < 7 %>
+     <p><%= comentario.semestre.year %>-1</p>
+     <% else %>
+     <p><%= comentario.semestre.year %>-2</p>
+     <% end %> 
+</li>
+<li>
+  <div>
+	  Materia:
+	</div>
+	<p><%= comentario.materia %></p>
+      </li>
+      <li>
+	<div>
+	  Facilidad:
+	</div>
+	<p><%= comentario.facilidad %></p>
+      </li>
+      <li>
+	<div>
+	  Ayuda:
+	</div>
+	<p><%= comentario.ayuda %></p>
+      </li>
+      <li>
+	<div>
+	  Claridad:
+	</div>
+	<p><%= comentario.claridad %></p>
+      </li>
+      <li>
+	<div>
+	  Aprobó:
+	</div>
+	<% if comentario.aprobo == true %>
+	<p>Si</p>
+	<% else %>
+	<p>No</p>
+	<% end %>
+      </li>
+      <li>
+	<div>
+	  Recursador:
+	</div>
+	<% if comentario.recursador == true %>
+	<p>Si</p>
+	<% else %>
+	<p>No</p>
+	<% end %>
+      </li>
+      <li>
+	<div>
+	  Total:
+	</div>
+	<p>10</p>
+      </li>
+      <li>
+	<div>
+	  ¿Lo recomienda?
+	</div>
+	<% if comentario.recomendacion == true %>
+	Si
+	<% else %>
+	<p>No</p>
+	<% end %>
+      </li>
+      
+    </ul>
+    
+    <label>Métodos de evaluación:</label>
+    <%= comentario.evaluacion %>
+    <label>Comentario:</label>
+    
+    <p class="text">
+      <% if comentario.warning %>
+      El comentario fue reportado y está esperando revisión.
+      <% else %>
+      <%= comentario.comentario %>
+      <% if !(comentario.ayudante_comentario == nil) %>
+      <p><label>Nombre del ayudante:</label>    
+	<%= comentario.ayudante_nombre %> </p>
+      <label>Comentario hacerca del ayudante:</label>
+      <%= comentario.ayudante_comentario %>
+      <% end %>
+      <% end %>
+    <% if comentario.warning && (conectado? && estudiante_actual.admin?)%>
+    COMENTARIO REPORTADO: <%= comentario.comentario %>
+    <% end %>
+    </p>
+    <p>Publicado hace <%= time_ago_in_words(comentario.created_at) %>.</p>
+
+    <% if comentario.respuesta != nil %>
+    <h5>RESPUESTA DEL PROFESOR:</h5>
+      <p><%= comentario.respuesta %></p>
+      <% elsif maestro_conectado? %>
+      
+      <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#responder">Responder</button>
+      <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+      <%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"%>
+      <%= javascript_include_tag "application" %>
+	<%= csrf_meta_tag %>      
+      <div class="modal fade" id="responder"  data-backdrop="false"> 
+	<div class="modal-dialog">
+	  <div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	      <h4 class="modal-title" id="exampleModalLabel">Responder comentario</h4>
+	    </div>	
+	    <div class="modal-body">	      
+	      <%= form_for [Maestro.find(comentario.maestro_id), comentario] do |f| %>
+	      
+	      <%= f.label :respuesta %>
+	      <%= f.text_area :respuesta, class: 'form-control' %>
+	      <div class="modal-footer">
+		<%= f.submit "Responder", class: "btn btn-success btn-lg btn-block" %>
+	      </div>
+	      <% end %>	
+	      
+	    </div>	    
+	  </div>
+	</div>
+      </div>
+      
+    <% end %>
+    <% if comentario.warning && (conectado? && estudiante_actual.admin?)%>
+    <p><%= link_to "Quitar reporte", quitar_reporte_comentario_path(busca_maestro(comentario.maestro_id), comentario,:maestro_id => comentario.maestro_id, :comentario_id => comentario.id), data: { confirm: "¿Ha revisado que el contenido del comentario no sea inapropiado?" } %></p>
+
+<% else %>
+<p><%= link_to "Reportar un comentario", reportar_comentario_path(busca_maestro(comentario.maestro_id), comentario, :maestro_id => comentario.maestro_id, :comentario_id => comentario.id), data: { confirm: "¿Desea reportar este comentario como inapropiado?" } %></p>
+<% end %>
+<% if conectado? && estudiante_actual.admin? %>
+<p><%= link_to "Eliminar comentario", comentario, method: :delete, data: { confirm: "¿Estás seguro de eliminar el comentario?" }  %></p>
+<% end %>
+</div>
+</section>

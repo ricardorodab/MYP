@@ -1,0 +1,19 @@
+<h1>Estudiantes#new</h1>
+<p>Find me in app/views/estudiantes/new.html.erb</p>
+<p href="#" id="reg">Registrarse</p>
+<!--Formulario registrarse-->
+<div class="row">
+  <div class="col-md-4">
+    <%= form_for(@estudiante) do |f| %>
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+    <%= f.label :correo %>
+    <%= f.text_field :correo %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <%= f.submit "Registrarse", class: "btn btn-success btn-lg btn-block" %>
+    <% end %>	
+  </div>
+</div>

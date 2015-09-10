@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%= favicon_link_tag 'favicon2.ico' %>
+<title>Estudiantes | El prometeo</title>
+<%= stylesheet_link_tag "estilos.css" %>
+    <%= stylesheet_link_tag "bootstrap.min.css" %>
+    <%= favicon_link_tag 'favicon2.ico' %>
+<body>
+<%= render 'layouts/header' %>
+<%= link_to "Atrás", @maestro %>
+<h2>Estudiantes</h2>
+
+<div id="bus">
+  <%= form_tag ayudante_nuevo_path(@maestro), :method => "get", id: "search-form" do %>
+  <%= hidden_field_tag :maestro_id, @maestro.id %>
+  <%= text_field_tag :search_ayudante, params[:search_ayudante], id: "searchbox", placeholder: " Buscar" %>
+  <%= submit_tag "Buscar",:class => "btn btn-success", id: "searchbutton", :name => nil %>
+  <% end %>       
+</div>
+<div class="pag"><%= will_paginate %></div>
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+  	<ul class="estudiantes">
+	  <% @estudiantes.each do |estudiante| %>
+	  <li> 
+	    <%= estudiante.nombre %>
+	    <% if !(Ayudantia.where("maestro_id = ? AND estudiante_id = ?", @maestro.id, estudiante.id).count > 0) %>
+	    | <%= link_to "Agregar ayudante a profesor "+@maestro.nombre, nuevo_ayudante_path(estudiante: estudiante, maestro_id: @maestro.id) %>
+	    <% elsif conectado? && estudiante_actual.admin? %>
+	    | <%= link_to "Eliminar ayudante", ayudante_eliminar_path(estudiante, :estudiante_id => estudiante, :maestro_id => @maestro.id), data: { confirm: "¿Estás seguro?" } %>
+	    <% end %>
+	  </li>
+	  <% end %>
+	</ul>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+<div class="pag"><%= will_paginate %></div>
+</body>
+<%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+    <%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"%>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+</html>
+

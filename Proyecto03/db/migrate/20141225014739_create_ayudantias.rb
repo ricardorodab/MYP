@@ -1,0 +1,10 @@
+class CreateAyudantias < ActiveRecord::Migration
+  def change
+    create_table :ayudantias do |t|
+      t.references :maestro, index: true
+      
+      t.timestamps null: false
+    end
+    add_foreign_key :ayudantias, :maestros
+  end
+end

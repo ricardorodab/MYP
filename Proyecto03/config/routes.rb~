@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+Rails.application.routes.draw do
+
+  #Ruta principal
+  root 'main#index'
+
+  #Rutas directas o estáticas
+  get 'sessions/new'
+  get 'main/index'
+  get 'estudiantes/new'
+  get 'logout' => 'main#index'
+  
+  #Rutas estudiantes
+  get 'registro' => 'estudiantes#new'  
+  get 'estudiantes' => 'estudiantes#index'
+  get 'estudiantes/:estudiantes_id/estadisticas' => 'estudiantes#estadisticas', :as => :estadisticas
+  
+  #Rutas de los controladores de maestros
+  get 'maestro_sessions/new'
+  get 'maestros/new'
+  get 'maestros_registro' => 'maestros#new'  
+  get 'maestros' => 'maestros#index'
+  get 'maestros/:maestros_id/aprobar' => 'maestros#aprobar', :as => :aprobar_maestro
+  get 'maestros/:maestros_id/env_cor_act' => 'maestros#env_cor_act', :as => :env_cor_act_maestro
+
+  #Rutas para sesiones
+  get 'login' => 'sessions#new'
+  get 'maestro_login' => 'maestro_sessions#new'
+  post 'maestro_login' => 'maestro_sessions#create'
+  delete 'maestro_logout' => 'maestro_sessions#destroy'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
+
+  #Rutas para comentarios
+  get 'maestros/:maestros_id/comentarios/:comentarios_id/reportar' => 'comentarios#reportar', :as => :reportar_comentario
+  get 'maestros/:maestros_id/comentarios/:comentarios_id/quitar_reporte' => 'comentarios#quitar_reporte', :as => :quitar_reporte_comentario
+  #get 'maestros/:maestros_id/comentarios/:comentarios_id/responder' => 'comentarios#responder', :as => :responder_comentario
+  #get 'maestros/:maestros_id/comentarios/:comentarios_id' => 'comentarios#edit'
+
+  
+  #Rutas para manejar ayudantes
+  get 'maestros/:maestros_id/ayudantes_new' => 'estudiantes#ayudante_nuevo', :as => :ayudante_nuevo
+  get 'maestros/:maestros_id/ayudantes_delete' => 'ayudantias#ayudante_destroy', :as => :ayudante_eliminar
+  get 'maestros/nuevo_ayudante' => 'ayudantias#ayudantes_create', :as => :nuevo_ayudante
+  get 'estudiantes/:estudiantes_id/baja_ayudante' => 'ayudantias#baja_ayudante', :as => :baja_ayudante
+  get 'estudiantes/:estudiantes_id/mantener_ayudante' => 'ayudantias#mantener_ayudante', :as => :mantener_ayudante
+
+
+  #Métodos que nos dan las rutas para cada controlador
+  resources :estudiantes
+  resources :activacion_cuentas, only: [:edit, :new]
+  resources :comentarios, only: [:create, :destroy, :show]
+  resources :ayudantias
+  resources :maestros
+  #Rutas de comentarios anidadas en maestros
+  resources :maestros do
+    resources :comentarios
+  end
+end

@@ -1,0 +1,12 @@
+<% if @estudiante.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      Favor de cambiar los siguientes errores <%= pluralize(@estudiante.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @estudiante.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

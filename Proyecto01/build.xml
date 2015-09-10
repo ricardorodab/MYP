@@ -1,0 +1,88 @@
+<project name="Proyecto 01" default="all" basedir=".">
+  <description>
+    Se usa para optimizar el manejo del programa graficador.
+  </description>
+  
+  <property name="loginAda" value="Proyecto1"/>
+ 
+  <target name="compile" description="Compila el código fuente.">
+    <mkdir dir="build"/>
+    <javac srcdir="src/mx/unam/ciencias/myp" 
+	   destdir="build"
+	   debug="true"
+           debuglevel="lines,vars,source"
+           includeantruntime="false"
+           deprecation="true"
+           nowarn="off">
+      <classpath> 
+        <fileset dir="lib">
+          <include name="*.jar"/>
+        </fileset>
+      </classpath>
+      <compilerarg value="-Xlint:unchecked"/>
+    </javac>
+  </target>
+  
+  <target name="doc"  description="Crea la documentación del código.">
+    <mkdir dir="doc"/>
+    <javadoc destdir="doc" author="true" version="true" charset="UTF-8">
+      <link href="http://docs.oracle.com/javase/6/docs/api/" />
+      <fileset file="src/mx/unam/ciencias/myp/*"/>
+    </javadoc>
+  </target>
+  
+  <target name="clean" description="Elimina los archivos temporales y los directorios build y doc.">
+    <delete>
+      <fileset file="src/mx/unam/ciencias/myp/*" defaultexcludes="no">
+	<exclude name="*.java"/>
+	<exclude name="*.xml"/>
+	<exclude name="*.txt" />
+      </fileset>
+    <fileset file="./*" defaultexcludes="no">
+	<exclude name="*.svg"/>
+	<exclude name="*.java"/>
+	<exclude name="*.xml"/>
+	<exclude name="*.txt" />
+      </fileset>
+    </delete>
+    <delete dir="build" />
+    <delete dir="doc" />
+    <delete file="${loginAda}.tar" />
+  </target>
+  
+  <target name="dist" depends="clean" description="Crea un archivo tar para enviar el código.">
+    <tar destfile="${loginAda}.tar" basedir="../"/>
+  </target>
+  
+  <target name="all" depends="clean,compile,doc" description="Compila y genera la documentación."/>
+
+  <target name="jar" depends="clean,compile" description="Crea el jar.">
+    <mkdir dir="build/jar"/>
+    <jar destfile="build/jar/${loginAda}.jar" basedir="build/">
+	<manifest>
+		<attribute name="Main-Class" value="mx.unam.ciencias.myp.Proyecto1"/>
+	</manifest>
+	</jar>
+   </target>
+
+  <target name="run" depends="clean,compile,jar" description="Corre el programa.">
+	<java jar="build/jar/Proyecto1.jar" fork="true" />
+  </target>
+
+  <target name="test" depends="jar">
+    <junit printsummary="yes" haltonfailure="no">
+      <formatter type="plain" usefile="false" />
+      <classpath>
+        <pathelement path="build" />
+        <pathelement location="lib/junit.jar" />
+        <pathelement location="lib/hamcrest-core.jar" />
+      </classpath>
+      <batchtest fork="yes">
+        <fileset dir="src/">
+          <include name="**/*Test*.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+</project>

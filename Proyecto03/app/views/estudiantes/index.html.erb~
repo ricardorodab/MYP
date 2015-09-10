@@ -1,0 +1,16 @@
+<h1>Usuarios</h1>
+
+<%= will_paginate %>
+
+<ul class="estudiantes">
+  <% @estudiantes.each do |estudiante| %>
+  <li> 
+    <%= link_to estudiante.nombre, estudiante %>
+    <% if estudiante_actual.admin? && !es_estudiante_actual?(estudiante) %>
+    | <%= link_to "eliminar", estudiante, method: :delete, data: { confirm: "¿Estás seguro?" } %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>

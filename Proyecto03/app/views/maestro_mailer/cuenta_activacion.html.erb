@@ -1,0 +1,13 @@
+<h1>El prometeo</h1>
+
+<p> Buen dia,<%= @maestro.grado %> <%= @maestro.nombre %>.
+  Se ha creado una solicitud para crear una cuenta de profesor en elprometeo.com a su nombre.
+</p>
+ 
+ <p>  
+  Puede activar su cuenta haciendo click en el link de abajo para completar su registro: 
+</p>
+ 
+  <%= link_to "Activar", edit_maestro_activacion_cuenta_url(@maestro, @maestro.activacion_token, correo: @maestro.correo) %>
+
+

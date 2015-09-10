@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<%= stylesheet_link_tag "estilos.css" %>
+<%= stylesheet_link_tag "bootstrap.min.css" %>
+<%= favicon_link_tag 'favicon2.ico' %>
+
+<title>Profesores | El prometeo</title>
+<body>
+  <%= render 'layouts/header' %>
+  <div class="pag">
+    <% if maestro_conectado? %>
+    <h2> Maestro(a), invite a sus compañeros a formar parte de esta comunidad que invita a la retroalimentación y sano espacio de opiniones </h2>
+    <% end %>
+    <%= will_paginate %>
+</div>
+
+<section id="contenido">
+
+	<% @maestros.each do |maestro| %>
+	<% if maestro.aprobado || (conectado? && estudiante_actual.admin?) %>
+	<article class="item">
+		<!--<figure class="imagen_item">
+			<img src="cuBlur.jpg"/>
+		</figure>-->
+		<h3>
+		  <%= link_to maestro.nombre, maestro %>
+		  <% if conectado? && estudiante_actual.admin? %>
+		  | <%= link_to "Eliminar", maestro, method: :delete, data: { confirm: "¿Estás seguro?" } %>
+		  <% if  maestro.aprobado == false %>
+		  | <%= link_to "Aprobar", aprobar_maestro_path(maestro, :maestro_id => maestro.id), data: { confirm: "¿Desea aprobar a este maestro?" } %> 
+			<h5>MAESTRO NO APROBADO  </h5>
+			<% end %>
+			<% end %>			
+
+			
+		<div class="categoria">				
+			<P>Profesor<p>
+		</div>
+	</article>
+	<% end %>
+	<% end %>
+</section>
+
+<div class="pag">
+	<%= will_paginate %>
+</div>
+
+<a href="maestros/new" id="addBtn">
+<button type="button" class="btn btn-primary btn-lg">Agregar un profesor</button>
+</a>
+
+</div>
+<footer>
+Página realizada por estudiantes para estudiantes.	
+</footer>
+<%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+    <%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"%>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+    </body>
+</html>

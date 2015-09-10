@@ -1,0 +1,174 @@
+html, body {
+  	width: auto !important;
+  	overflow-x: hidden !important;
+  	background-color: #eeeeee !important;
+}
+
+#index
+{
+	background-image: url(cienciasblur.jpg);
+}
+#welcome
+{
+	background-image: url(cuBlur.jpg);
+
+}
+#welcome h1
+{
+	color: #eeeeee;
+}
+header 
+{
+	/*background-image: url(cienciasblur.jpg);*/
+	/*background-image: url(cuBlur.jpg);*/
+	background-repeat: no-repeat;
+	background-size: 1408px 1056px;
+	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 900px;
+}
+header h1
+{
+	color: #2c3e50;
+	font-size: 93px;
+	font-weight: 100;
+	line-height: 93px;
+	margin: 0em 0;
+	padding: 1.4em 0 .5em;
+	text-align: center;
+}
+header ul
+{
+	list-style: none;
+}
+header
+{
+	/*margin-bottom: 4em;
+	margin-top: 2em;*/
+	text-align: center;
+}
+header p
+{
+	background: #d35400;
+	border-radius: 9px;
+	border: 2px solid #d35400;
+	color: white;
+	font-size: 22px;
+	font-weight: 300;
+	letter-spacing: 1.8px;
+	margin-left: -2.5em;
+	padding: 20px 35px;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2em;
+	display: block;
+	width: 11em ;
+
+}
+header form{
+	margin-top: -2.7em;
+	margin-bottom: 1.5em;
+
+}
+header p:active
+{
+	color: white;
+	text-decoration: none;
+}
+header p:hover
+{
+	color: white;
+	text-decoration: none;
+}
+header p:visited
+{
+	color: white;
+	text-decoration: none;
+}
+header p:link
+{
+	color: white;
+	text-decoration: none;
+}
+#login-form{
+	padding: 1em;
+	background-color: #34495e;
+}
+#reg-form{
+	padding: 1em;
+	background-color: #34495e;
+}
+
+
+
+body .profesores
+{
+	background-color: #e7e7e7;
+}
+
+footer
+{
+	height: 15em;
+	background-color: #2980b9;
+}
+
+/*welcome/welcome*/
+
+body header	#searchbox
+{
+	width: 50%;
+	height: 50px;
+	border-radius: 4px;
+	border: none;
+	margin-top: 6em;
+	font-size: 2em;
+}
+body header	#searchbutton
+{
+	min-width: 70px;	
+	width: 10%;
+	height: 50px;
+	border-radius: 4px;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	color: #fff;
+	font-size: 1.3em;
+	border: none;
+	margin-top: 6em;
+}
+#contenido
+{
+	margin: 1em;
+}
+#contenido .item
+{
+	background: white;
+	border-bottom: 3px solid #2980b9; 
+	min-height: 10px;
+	position: relative;*/
+
+}
+#contenido .item h3
+{
+	padding-top: 3px;
+	padding-left: 4px
+}
+#contenido .item h4
+{
+
+	padding-left: 4px
+}
+#contenido .item:hover
+{
+	border-bottom: 3px solid #2ecc71;
+}
+
+
+
+
+
+
+
+
+

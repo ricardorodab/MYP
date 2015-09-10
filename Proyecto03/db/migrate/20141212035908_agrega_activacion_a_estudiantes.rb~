@@ -1,0 +1,4 @@
+class AgregaActivacionAEstudiantes < ActiveRecord::Migration
+  def change
+  end
+end

@@ -1,0 +1,16 @@
+<%= form_for(@comentarios) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.hidden_field :maestro_id, maestro_id: @maestro_id %>
+    <%= f.text_area :comentario, placeholder: "Escribe un comentario..." %>
+    <%= f.text_area :materia, placeholder: "Materia..." %>
+    <%= f.select :facilidad, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]) %>
+    <%= f.select :ayuda, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]) %>
+    <%= f.select :claridad, options_for_select([["0", "0"], ["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"], ["8", "8"], ["9", "9"], ["10", "10"]]) %>
+    <%= f.select :aprobo, options_for_select([["Si", "true"], ["No", "false"]]) %>
+    <%= f.select :recursador, options_for_select([["Si", "true"], ["No", "false"]]) %>
+    <%= f.text_area :evaluacion, placeholder: "Forma de evaluación..." %>
+    <%= f.select :recomendacion, options_for_select([["Si", "true"], ["No", "false"]]) %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>

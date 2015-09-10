@@ -1,0 +1,4 @@
+class AddWarningAComentarios < ActiveRecord::Migration
+  def change
+  end
+end

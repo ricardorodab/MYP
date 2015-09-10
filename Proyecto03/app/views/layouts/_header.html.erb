@@ -1,0 +1,76 @@
+<% if conectado? || maestro_conectado? %>
+<nav class="navbar navbar-default" data-no-turbolink role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href=
+	 <% if conectado? %>
+	 <%=  estudiante_path(estudiante_actual.id) %>
+	 <% elsif maestro_conectado? %>
+	 <%=  maestro_path(maestro_actual.id) %>
+	 <% end %>
+	 >El Prometeo</a>
+    </div>
+    <div class="collapse navbar-collapse" data-no-turbolink id="mobile">
+      <ul class="nav navbar-nav">
+	<% if conectado? %>
+        <li><%= link_to "Inicio", estudiante_actual %></li>     
+	<% else %>
+	<li><%= link_to "Inicio", maestro_actual %></li>     
+	<% end %>
+	<li><a href=<%= maestros_path %>>Profesores</a></li>
+        <li>
+          <% if conectado? %>
+        <li><%= link_to "Estudiantes", estudiantes_path %></li>
+      	<% if estudiante_actual.admin? %>
+	<li><%= link_to "Reportes y estadísticas", estadisticas_path(estudiante_actual) %></li>
+      	<% end %>
+
+            <% end %>   
+        </li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+	<li>
+	  <%= form_tag maestros_path, :class =>"navbar-form navbar-left", :method => "get", id: "search-form" do %>
+
+	    <%= text_field_tag :search, params[:search], :class => "form-control", id: "searchbox", placeholder: " Buscar" %>
+	  <%= submit_tag "Buscar", class: "btn btn-success", id: "searchbutton", :name => nil %>
+	  <% end %>               
+	  </li>
+	
+        <!-- Nombre de ususario --> 
+        <li class="dropdown" data-no-turbolink>
+          <% if conectado? %>
+	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <%= nombre_estudiante_actual %> <span class="caret"></span></a>
+	  <% else %>
+	  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <%= nombre_maestro_actual %> <span class="caret"></span></a>
+	  <% end %>
+          <ul class="dropdown-menu" role="menu" data-no-turbolink>
+	    <% if conectado? %>
+            <li><%= link_to "Perfil", estudiante_actual %></li>
+	    <li><%= link_to "Estudiantes", estudiantes_path %></li>
+      	    <% if estudiante_actual.admin? %>
+	    <li><%= link_to "Reportes y estadísticas", estadisticas_path(estudiante_actual) %></li>
+      	    <% end %>
+            <li><%= link_to "Configuración", edit_estudiante_path(estudiante_actual)%></li>	
+            <li class="divider"></li>
+            <li><%= link_to "Cerrar sesion", logout_path, method: "delete" %></li>
+	    <% else %>
+	    <li><%= link_to "Perfil", maestro_actual %></li>
+            <li><%= link_to "Configuración", edit_maestro_path(maestro_actual)%></li>	
+            <li class="divider"></li>
+            <li><%= link_to "Cerrar sesion", maestro_logout_path, method: "delete" %></li>
+	    <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<% end %>

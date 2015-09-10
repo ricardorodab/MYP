@@ -1,0 +1,9 @@
+Mailers implementados:
+
+En la pagina tira error porque las credenciales para el servidor de correo aun no estan online,
+pero ya funcionan.
+
+Faltan:
+-Implementacion de advertencias/avisos en la pagina de administracion (estadisticas).
+
+Rafa

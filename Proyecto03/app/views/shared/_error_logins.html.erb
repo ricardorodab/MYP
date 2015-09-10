@@ -1,0 +1,21 @@
+<% if !flash[:warning].blank? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      Disculpe las molestias, se encontró 1 inconveniente.
+      <ul>
+        <li><%= flash[:warning] %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<% if !flash[:danger].blank? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      Disculpe las molestias, se encontró 1 inconveniente.
+      <ul>
+        <li><%= flash[:danger] %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>

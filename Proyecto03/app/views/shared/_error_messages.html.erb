@@ -1,0 +1,12 @@
+<% if @estudiante.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      Disculpe las molestias, se encontró <%= pluralize(@estudiante.errors.count, "inconveniente") %>.
+        <ul>
+          <% @estudiante.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+<% end %>

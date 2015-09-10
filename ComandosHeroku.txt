@@ -1,0 +1,3 @@
+heroku run bash --app arcane-basin-4874
+heroku git:clone -a arcane-basin-4874
+git push heroku master

@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag "estilos.css" %>
+<%= stylesheet_link_tag "bootstrap.min.css" %>
+<%= favicon_link_tag 'favicon2.ico' %>
+<!--Formulario registrarse-->
+<%= render 'layouts/header' %>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h3 class="centerh3">Configuración</h3>
+        <%= form_for [@maestro, @comentario], :url => @maestro_url do |f| %>
+
+        <%= f.label :respuesta %>
+        <%= f.text_area :respuesta, class: 'form-control' %>
+
+        <%= f.submit "Responder", class: "btn btn-success btn-lg btn-block" %>
+        <% end %>	
+    </div>
+    <div class="col-md-4"></div>
+</div>

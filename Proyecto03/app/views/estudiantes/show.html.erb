@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= @estudiante.nombre %> | Pregúntale a Prometeo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_link_tag "estilos.css" %>
+    <%= stylesheet_link_tag "bootstrap.min.css" %>
+    <%= favicon_link_tag 'favicon2.ico' %>
+  </head>
+  <body>
+    <header id="welcome">
+    <% if !flash[:success].blank? %>
+    <div class="alert alert-success" id="comAlert" role="alert">
+    	<ul>
+  			<% flash.each do |key, value| %>
+    		<li><div class="flash <%= key %>"><%= value %></div></li>
+			<% end %>
+  		</ul>
+  	</div>
+  	<% end %>
+      <h1>El Prometeo</h1>
+      <% if conectado? && (estudiante_actual.id != @estudiante.id) %>
+      <h5>(Perfil de <%= @estudiante.nombre %>)</h5>
+      <% end %>
+      <%= form_tag maestros_path, :method => "get", id: "search-form" do %>
+      <%= text_field_tag :search, params[:search], id: "searchbox", placeholder: " Buscar" %>
+      <%= submit_tag "Buscar", id: "searchbutton", :name => nil %>
+      <% end %>       
+    </header>
+    <%= render 'layouts/header' %>
+    
+    <section id="contenido">
+      <% if Ayudantia.ayudados_por(@estudiante).count > 0 %>
+      <h2>ES AYUDANTE DE:</h2>
+      <% end %>
+      <!--<ul class="nav nav-pills">
+	<li role="presentation"><a href="#">A</a></li>
+	<li role="presentation"><a href="#">B</a></li>
+	<li role="presentation"><a href="#">C</a></li>
+	<li role="presentation"><a href="#">D</a></li>
+	<li role="presentation"><a href="#">E</a></li>
+	<li role="presentation"><a href="#">F</a></li>
+	<li role="presentation"><a href="#">G</a></li>
+	<li role="presentation"><a href="#">H</a></li>
+	<li role="presentation"><a href="#">I</a></li>
+	<li role="presentation"><a href="#">J</a></li>
+	<li role="presentation"><a href="#">K</a></li>
+	<li role="presentation"><a href="#">L</a></li>
+	<li role="presentation"><a href="#">M</a></li>
+	<li role="presentation"><a href="#">N</a></li>
+	<li role="presentation"><a href="#">Ñ</a></li>
+	<li role="presentation"><a href="#">O</a></li>
+	<li role="presentation"><a href="#">P</a></li>
+	<li role="presentation"><a href="#">Q</a></li>
+	<li role="presentation"><a href="#">R</a></li>
+	<li role="presentation"><a href="#">S</a></li>
+	<li role="presentation"><a href="#">T</a></li>
+	<li role="presentation"><a href="#">U</a></li>
+	<li role="presentation"><a href="#">V</a></li>
+	<li role="presentation"><a href="#">W</a></li>
+	<li role="presentation"><a href="#">X</a></li>
+	<li role="presentation"><a href="#">Y</a></li>
+	<li role="presentation"><a href="#">Z</a></li>
+      </ul>-->
+      <a href="#">
+	<% Ayudantia.ayudados_por(@estudiante).each do |ayudado| %>
+		<article class="item">
+			<!--<figure class="imagen_item">
+				<img src="cuBlur.jpg"/>
+			</figure>-->
+			
+			<h3>
+				<%= link_to ayudado.nombre, ayudado %> |				
+			</h3>
+			<% if @estudiante.id == estudiante_actual.id %>
+			<h6><%= link_to "Pedir dar de baja", baja_ayudante_path((@estudiante.id), :maestro_id => ayudado.id, :id => @estudiante.id, :estudiante_id => @estudiante.id), data: {Confirm: "¿Estás seguro? (Se revisará tu caso por un administrador)" } %></h6>
+			<% end %>
+			<div class="categoria">				
+				<P>Profesor<p>
+			</div>
+		</article>
+		<% end %>
+	</a>
+      <% if Comentario.califico_a(@estudiante).count > 0 %>
+      <h2>HA CALIFIADO A:</h2>
+      <% end %>
+	<a href="#">
+	<% Comentario.califico_a(@estudiante).each do |calificado| %>
+		<article class="item">
+			<!--<figure class="imagen_item">
+				<img src="cuBlur.jpg"/>
+			</figure>-->
+			
+			<h3>
+				<%= link_to calificado.nombre, calificado %>
+			</h3>	
+			<div class="categoria">				
+				<P>Profesor<p>
+			</div>
+		</article>
+		<% end %>
+	</a>
+	<a href="#">      
+    </section>
+    <footer>
+      <p>Pagina realizada por estudiantes para estudiantes</p>
+      <%= @estudiante.nombre %>, <%= @estudiante.correo %>
+    </footer>
+    <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+    <%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"%>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+  </body>
+</html>

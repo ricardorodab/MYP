@@ -1,0 +1,94 @@
+<section class="comentarios-prof">
+  <div class="comment">
+    <ul class="">
+      <li>
+	<div>
+	  Estudiante:
+	</div>
+	<p><%= link_to comentario.estudiante.nombre, comentario.estudiante %></p>
+      </li>
+      <li>
+	<div>
+	  Semestre:
+	</div>
+	<% if comentario.semestre.month < 7 %>
+	<p><%= comentario.semestre.year %>-1</p>
+	<% else %>
+	<p><%= comentario.semestre.year %>-2</p>
+	<% end %>
+      </li>
+      <li>
+	<div>
+	  Materia:
+	</div>
+	<p><%= comentario.materia %></p>
+      </li>
+      <li>
+	<div>
+	  Facilidad:
+	</div>
+	<p><%= comentario.facilidad %></p>
+      </li>
+      <li>
+	<div>
+	  Ayuda:
+	</div>
+	<p><%= comentario.ayuda %></p>
+      </li>
+      <li>
+	<div>
+	  Claridad:
+	</div>
+	<p><%= comentario.claridad %></p>
+      </li>
+      <li>
+	<div>
+	  Aprobó:
+	</div>
+	<% if comentario.aprobo = true %>
+	<p>Si</p>
+	<% else %>
+	<p>No</p>
+	<% end %>
+      </li>
+      <li>
+	<div>
+	  Recursador:
+	</div>
+	<% if comentario.recursador = true %>
+	<p>Si</p>
+	<% else %>
+	<p>No</p>
+	<% end %>
+      </li>
+      <li>
+	<div>
+	  Métodos de evaluacion:
+	</div>
+	<ul>
+	  <li>
+	    <%= comentario.evaluacion %>
+	    </li>
+	</ul>
+      </li>
+      <li>
+	<div>
+	  Recomendación:
+	</div>
+	<% if comentario.recomendacion = true %>
+	<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+	<% else %>
+	<p>No</p>
+	<% end %>
+      </li>
+      <li>
+	<div>
+	  Total:
+	</div>
+	<p>10</p>
+      </li>
+    </ul>
+    <p class="text"><%= comentario.comentario %></p>
+    <p>Publicado hace <%= time_ago_in_words(comentario.created_at) %>.</p>
+  </div>
+</section>

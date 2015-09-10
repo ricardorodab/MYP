@@ -1,0 +1,4 @@
+class AddRememberDigestAMaestros < ActiveRecord::Migration
+  def change
+  end
+end

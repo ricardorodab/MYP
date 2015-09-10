@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag "estilos.css" %>
+<%= stylesheet_link_tag "bootstrap.min.css" %>
+<%= favicon_link_tag 'favicon2.ico' %>
+<!--Formulario registrarse-->
+<%= render 'layouts/header' %>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h3 class="centerh3">Configuración</h3>
+        <%= form_for(@maestro) do |f| %>
+
+        <%= f.label :nombre %>
+        <%= f.text_field :nombre, class: 'form-control' %>
+
+        <%= f.label :correo %>
+        <%= f.text_field :correo, class: 'form-control'  %>
+
+	<%= f.label :grado %>
+	<%= f.select :grado, options_for_select([["Doctor", "Doctor"], ["Maestro", "Maestro"], ["Matemático", "Matemático"], ["Licenciado", "Licenciado"], ["Biólogo", "Biólogo"], ["Físico", "Físico"], ["Actuario", "Actuario"], ["Ingeniero", "Ingeniero"], ["Ayudante", "Ayudante"], ["Otros", "Otros"]]) %>
+	
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control'  %>
+	
+        <%= f.label :password_confirmation, 'Confirmation'  %>
+        <%= f.password_field :password_confirmation, class: 'form-control'  %>
+	
+        <%= f.submit "Guardar cambios", class: "btn btn-success btn-lg btn-block" %>
+        <% end %>	
+    </div>
+    <div class="col-md-4"></div>
+</div>

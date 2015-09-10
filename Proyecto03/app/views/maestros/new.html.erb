@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%= stylesheet_link_tag "estilos.css" %>
+  <%= stylesheet_link_tag "bootstrap.min.css" %>
+<%= favicon_link_tag 'favicon2.ico' %>
+<title>Nuevo Profesor | El Prometeo</title>
+<body>
+  <% if maestro_conectado? || conectado? %> 
+<%= render 'layouts/header' %>
+<% else %>
+<p>Profesor o profesora: Para asegurar la veracidad de sus datos, favor de llenar la forma y un correo le llegará a en la brevedad posible</p>
+<% end %>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h3 class="centerh3">Agregar un profesor</h3>
+        <%= form_for(@maestro) do |f| %>
+        <!-- render 'shared/error_messages' --><!--Por el momento no sirve, Rodrigo-->
+        <%= f.label :nombre %>
+        <%= f.text_field :nombre, class: 'form-control' %>
+
+         <%= f.label :correo %>
+         <%= f.text_field :correo, class: 'form-control'  %><span class="input-group-addon">@ciencias.unam.mx</span>
+
+	<%= f.label :grado %>
+	<%= f.select :grado, options_for_select([["Doctor", "Doctor"], ["Maestro", "Maestro"], ["Matemático", "Matemático"], ["Licenciado", "Licenciado"], ["Biólogo", "Biólogo"], ["Físico", "Físico"], ["Actuario", "Actuario"], ["Ingeniero", "Ingeniero"], ["Ayudante", "Ayudante"], ["Otros", "Otros"]]) %>
+        <p id="note">*Recuerda que todos los campos son obligatorios.</p>
+        <%= f.submit "Registrar profesor", class: "newprof btn btn-success btn-lg btn-block" %>
+        <% end %>	
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+    <%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"%>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+    </body>
+</html>

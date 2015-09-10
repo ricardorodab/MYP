@@ -1,0 +1,85 @@
+<% if conectado? %>
+<script type="text/javascript">
+  window.location.href="/estudiantes/<%= estudiante_actual.id %>"  
+</script>
+<% elsif maestro_conectado? %>
+<script type="text/javascript">
+  window.location.href="/maestros/<%= maestro_actual.id %>"  
+</script>
+<% end %>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>El Prometeo</title>
+    <meta name="description" content="Pagina para evaluar a los profesores de la Facultad de Ciencias UNAM"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <%= stylesheet_link_tag "estilos.css" %>
+    <%= favicon_link_tag 'favicon2.ico' %>
+    <%= stylesheet_link_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" %>
+  </head>
+  <body>
+    <header id="index">
+
+      <h1>El Prometeo</h1>
+
+      <%= link_to "Registrarse", registro_path, class: "orangeBtn" %>
+      <%= link_to "Ingresar", login_path, class: "orangeBtn" %>
+        
+    </header>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Acerca de El Prometo
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        El prometeo es una página realizada por estudiantes que va dirigida a estudiantes de la Facultad de Ciencias UNAM.
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          En El Pometeo puedes ...
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        <ul>
+          <li>Calificar a los profesores.</li>
+          <li>Buscar profesores.</li>
+          <li>Ver las opiniónes de otros alumnos acerca de un profesor.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Ventajas de El Prometeo
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        <ul>
+          <li>Es la unica página en la que podrás evaluar a los ayudantes.</li>
+          <li>Los profesores nunca podrán ver quienes son los que los califican.</li>
+          <li>etc</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+     <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js" %>
+    <%= javascript_include_tag"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"%>
+
+  </body>
+</html>

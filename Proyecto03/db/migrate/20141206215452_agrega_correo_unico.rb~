@@ -1,0 +1,4 @@
+class AgregaCorreoUnico < ActiveRecord::Migration
+  def change
+  end
+end

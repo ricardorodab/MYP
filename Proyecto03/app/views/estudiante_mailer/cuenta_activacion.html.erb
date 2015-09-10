@@ -1,0 +1,13 @@
+<h1>El prometeo</h1>
+
+<p> Hola <%= @estudiante.nombre %>.
+  Gracias por inscribirte en la página hecha por alumnos para alumnos de la facultad de ciencias.
+</p>
+ 
+ <p>  
+  Por favor, da click en el link de abajo para activar tu cuenta: 
+</p>
+ 
+  <%= link_to "Activar", edit_activacion_cuenta_url(@estudiante.activacion_token, correo: @estudiante.correo) %>
+
+

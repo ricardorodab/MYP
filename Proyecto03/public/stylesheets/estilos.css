@@ -1,0 +1,449 @@
+html, body {
+  	width: auto !important;
+  	overflow-x: hidden !important;
+  	background-color: #eeeeee !important;
+}
+
+#index
+{
+	background-image: url(cienciasBlur.jpg);
+}
+#welcome
+{
+	background-image: url(cuBlur.jpg);
+	background-repeat: repeat-x;
+	height: 700px;
+}
+#welcome h1
+{
+	color: white;
+}
+header 
+{
+	background-repeat: no-repeat;
+	background-size: 1408px 1056px;
+	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 900px;
+}
+header h1
+{
+	color: #2c3e50;
+	font-size: 93px;
+	font-weight: 100;
+	line-height: 93px;
+	margin: 0em 0;
+	padding: 1.4em 0 .5em 0;
+	text-align: center;
+}
+header ul
+{
+	list-style: none;
+}
+header
+{
+	/*margin-bottom: 4em;
+	margin-top: 2em;*/
+	text-align: center;
+}
+header .orangeBtn
+{
+	background: #d35400;
+	border-radius: 9px;
+	border: 2px solid #d35400;
+	color: white;
+	font-size: 22px;
+	font-weight: 300;
+	letter-spacing: 1.8px;
+	margin-left: -2.5em;
+	padding: 20px 35px;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2em;
+	display: block;
+	width: 11em ;
+
+}
+header form{
+	margin-top: -2.7em;
+	margin-bottom: 1.5em;
+
+}
+header .orangeBtn:active
+{
+	color: white;
+	text-decoration: none;
+}
+header .orangeBtn:hover
+{
+	color: white;
+	text-decoration: none;
+}
+header .orangeBtn:visited
+{
+	color: white;
+	text-decoration: none;
+}
+header .orangeBtn:link
+{
+	color: white;
+	text-decoration: none;
+}
+#login-form{
+	padding: 1em;
+	background-color: #34495e;
+}
+#reg-form{
+	padding: 1em;
+	background-color: #34495e;
+}
+
+
+body .profesores
+{
+	background-color: #e7e7e7;
+}
+
+footer
+{
+	margin-top: 1em;
+	height: 15em;
+	background-color: #2980b9;
+}
+
+/* estudiantes/show */
+body header	#searchbox
+{
+	width: 50%;
+	height: 50px;
+	border-radius: 4px;
+	border: none;
+	margin-top: 6em;
+	font-size: 2em;
+}
+body header	#searchbutton
+{
+	min-width: 70px;	
+	width: 10%;
+	height: 50px;
+	border-radius: 4px;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	color: #fff;
+	font-size: 1.3em;
+	border: none;
+	margin-top: 6em;
+	position: relative;
+	top: -5px;
+}
+#comAlert
+{
+	margin: 0em 1em 1em 1em;
+}
+#contenido
+{
+	margin-top: -1em;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+#contenido .nav.nav-pills
+{
+	background-color: white;
+	text-align: center;
+	border-radius: 9px;
+}
+#contenido .nav.nav-pills li
+{
+	float: center;
+	display: inline-block;
+	margin: -3px;
+
+}
+
+#contenido .item
+{
+	background: white;
+	border-bottom: 15px solid #2980b9; 
+	display: inline-block;
+	margin-left: .8em;
+	margin-right: .8em;
+	margin-top: .7em;
+	overflow: scroll;
+	height: 6em;
+	width: 320px;
+	border-radius: 4px 4px 4px 4px;
+}
+#contenido .item h3
+{
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-top: 1px; 
+}
+#contenido .item .categoria
+{
+	background: #d35400;
+	border-radius: 7px;
+	display: inline-block;
+	height: 25px;
+	float: right;
+	margin-right: .7em;
+	margin-bottom: .5em;
+}
+#contenido .item .categoria p
+{
+	margin-top: 2px;
+	margin-left: 8px;
+	margin-right: 8px;
+	color: white;
+		
+}
+#contenido .item h4
+{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+@media screen and (max-width: 1129px){
+	#contenido .item
+	{
+		width: 320px ;
+		height: 6em;
+	}
+}
+@media screen and (max-width: 1075px){
+	#welcome
+	{
+		height: 650px;
+	}
+	#contenido .item
+	{
+		min-width: 47%;
+		height: 6em;
+	}
+	body header	#searchbox
+	{
+
+		margin-top: 3em;
+	}
+	body header	#searchbutton
+	{
+		margin-top: 3em;
+	}
+}
+@media screen and (max-width: 840px){
+	#welcome
+	{
+		height: 550px;
+	}
+	#welcome h1
+	{
+		font-size: 60px
+	}
+	#contenido .item
+	{
+		min-width: 97%;
+		margin-right: 1em;
+	}
+	body header	#searchbox
+	{
+
+		margin-top: 2em;
+	}
+	body header	#searchbutton
+	{
+		margin-top: 2em;
+	}
+	#contenido .item
+	{
+		margin-left: 0em;
+		margin-right: 0em;
+		width: 100%;
+	}
+}
+/*Formulario registrarse*/
+#form
+{
+	text-align: center;
+}
+@media screen and (max-width: 991px){
+	#new_estudiante
+	{
+		margin: 1em;
+	}
+}
+/*Formulario login*/
+.form-group .row .col-md-4 .checkbox
+{
+	margin-left: 1.3em;
+} 
+.form-group .row .col-md-4 p
+{
+	margin-top: 1em;
+	float: right;
+}
+@media screen and (max-width: 991px){
+	form
+	{
+		margin: 1em;
+	}
+	.form-group .row .col-md-4 p
+	{
+		margin-right: 1.4em;
+	}
+}
+/*Errores*/
+#error_explanation div
+{
+	margin: 1em;
+}
+#error_explanation
+{
+	text-align: center;
+}
+#error_explanation ul
+{
+	margin-top: 10px;
+	list-style: none;
+}
+#error_explanation div ul li
+{
+	text-align: center;
+	margin-left: -2.5em;
+	font-size: 18px;
+}
+/*Formulario Registrarse*/
+#form-group #row #col-md-4 h2
+{
+	text-align: center;
+}
+/*maestros/index*/
+#addBtn
+{
+	margin-left: 3em;
+}
+
+/*maestros/new*/
+#note
+{
+	margin-top: .8em;
+}
+#maestro_grado
+{
+	margin-top: 1em;
+}
+.newprof.btn.btn-success.btn-lg.btn-block
+{
+	margin-top: 1em;
+}
+/*- Maestros/show -*/
+#prof
+{
+	margin: 1em;
+	
+}
+#prof .datos-prof
+{
+	background-color: white;
+	border-radius: 10px;
+}
+#prof .datos-prof button
+{
+	margin-right: .5em;
+	position: relative;
+	top: -4em;
+	float: right;
+}
+#prof .datos-prof #data
+{
+	margin: 0em 2em 0em 0em;
+	padding: 0em 6em 0em .5em;
+}
+
+#prof .promedio
+{
+	background-color: white;
+	text-align: center;
+}
+#prof .promedio ul
+{
+	list-style: none;
+}
+#prof .promedio li
+{
+	display: inline-block;
+}
+#prof .comentarios-prof .comment
+{
+	border-radius: 10px;
+	margin-top: .6em;
+	background-color: white;
+	border: 1px solid white;
+}
+#prof .comentarios-prof .comment p
+{
+	margin: 0px	.5em;
+}
+#prof .comentarios-prof .comment:hover
+{
+	border: 1px solid #3498db;
+}
+#prof .comentarios-prof .comment ul
+{
+	list-style: none;
+}
+#prof .comentarios-prof .comment ul li
+{
+	display: inline-block;
+	padding: .1em .3em;
+	text-align: center;
+}
+#prof .comentarios-prof .comment ul li p
+{
+	text-align: center;
+}
+#prof .comentarios-prof .comment span
+{
+	color: #f1c40f;
+	font-size: 25px;
+}
+#prof .comentarios-prof .comment li div
+{
+	font-weight: bold;
+}
+/*estudiantes/index*/
+h2
+{
+	text-align: center;
+}
+#search-form #searchbox
+{
+	height: 34px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #fff;
+}
+#search-form #searchbutton
+{
+	position: relative;
+	top: -2px;
+}
+#bus
+{
+	text-align: center;
+}
+/*estudiantes/edit*/
+.centerh3
+{
+	text-align: center;
+}
+.edit_estudiante .btn.btn-success.btn-lg.btn-block
+{
+	margin-top: 1em;
+}
+/*Pagination center*/
+.pag
+{
+	text-align: center;
+}
+
+
