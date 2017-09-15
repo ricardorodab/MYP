@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141227083245) do
+ActiveRecord::Schema.define(version: 20141229090747) do
 
   create_table "ayudantias", force: :cascade do |t|
     t.integer  "maestro_id",        limit: 4
@@ -66,17 +66,20 @@ ActiveRecord::Schema.define(version: 20141227083245) do
   add_index "estudiantes", ["correo"], name: "index_estudiantes_on_correo", unique: true, using: :btree
 
   create_table "maestros", force: :cascade do |t|
-    t.string   "nombre",          limit: 255
-    t.string   "correo",          limit: 255
+    t.string   "nombre",            limit: 255
+    t.string   "correo",            limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest", limit: 255
-    t.boolean  "admin",           limit: 1,   default: false
-    t.string   "grado",           limit: 255
-    t.boolean  "aprobado",        limit: 1,   default: false
-    t.string   "remember_digest", limit: 255
-    t.boolean  "correo_enviado",  limit: 1,   default: false
-    t.boolean  "registrado",      limit: 1,   default: false
+    t.string   "password_digest",   limit: 255
+    t.boolean  "admin",             limit: 1,   default: false
+    t.string   "grado",             limit: 255
+    t.boolean  "aprobado",          limit: 1,   default: false
+    t.string   "remember_digest",   limit: 255
+    t.boolean  "correo_enviado",    limit: 1,   default: false
+    t.boolean  "registrado",        limit: 1,   default: false
+    t.string   "activacion_digest", limit: 255
+    t.boolean  "activado",          limit: 1,   default: false
+    t.datetime "activado_a"
   end
 
   add_index "maestros", ["correo"], name: "index_maestros_on_correo", unique: true, using: :btree

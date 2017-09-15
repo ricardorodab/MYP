@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
+AA# -*- coding: utf-8 -*-
 class EstudiantesController < ApplicationController
   respond_to :html, :json, :js
   before_action :es_un_usuario, only: [:edit, :update, :destroy, :show]
